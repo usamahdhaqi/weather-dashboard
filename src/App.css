@@ -1,38 +1,47 @@
-.App {
-  text-align: center;
+:root{
+  --bg-dark:#071026;
+  --card-dark:#09182a;
+  --muted:#9fb6c8;
+  --accent:#5bd0ff;
+  --glass: rgba(255,255,255,0.03);
+
+  --bg-light:#f6fbff;
+  --card-light:#ffffff;
+  --text-light:#0b2b3a;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+.app{min-height:100vh;padding:24px;transition:background .25s,color .25s}
+.app.dark{background:linear-gradient(180deg,var(--bg-dark),#061422);color:#e6f7ff}
+.app.light{background:var(--bg-light);color:var(--text-light)}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.brand h1{margin:0;font-size:20px;letter-spacing:0.6px}
+.tag{margin:0;color:var(--muted);font-size:13px}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+.controls{display:flex;gap:12px;align-items:center}
+.searchbar{display:flex;gap:8px;align-items:center}
+.input{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);min-width:220px}
+.btn{padding:8px 10px;border-radius:8px;border:none;background:var(--accent);color:#032029;cursor:pointer;font-weight:600}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit}
 
-.App-link {
-  color: #61dafb;
-}
+.main{padding:16px}
+.summary{display:flex;align-items:center;gap:16px;margin-bottom:12px}
+.current .temp{font-size:42px;font-weight:700}
+.current .desc{color:var(--muted);text-transform:capitalize}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chart-section{background:var(--card-dark);padding:12px;border-radius:12px;margin-bottom:12px}
+.app.light .chart-section{background:var(--card-light);box-shadow:0 6px 20px rgba(16,24,40,0.06)}
+
+.cards{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+.forecast-card{
+  width:120px;background:var(--card-dark);padding:10px;border-radius:10px;text-align:center;
 }
+.app.light .forecast-card{background:var(--card-light);border:1px solid #eef4fb}
+.forecast-card .temps{display:flex;justify-content:center;gap:8px;font-weight:700}
+
+.chart-wrap{height:240px}
+
+.loader{padding:20px}
+.error{color:#ffb4b4;background:rgba(255,180,180,0.06);padding:10px;border-radius:8px}
