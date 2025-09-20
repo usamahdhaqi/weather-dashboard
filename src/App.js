@@ -13,7 +13,6 @@ function App() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Optional: on load, try to use geolocation
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(async (pos) => {
         try {
@@ -23,7 +22,9 @@ function App() {
           setCityLabel("Your Location");
         } catch (e) {
           setError(e.message);
-        } finally { setLoading(false); }
+        } finally {
+          setLoading(false);
+        }
       }, () => {});
     }
   }, []);
@@ -39,7 +40,9 @@ function App() {
       setCityLabel(`${geo.name}, ${geo.country}`);
     } catch (e) {
       setError(e.message);
-    } finally { setLoading(false); }
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function handleUseLocation() {
@@ -52,7 +55,9 @@ function App() {
         setCityLabel("Your Location");
       } catch (e) {
         setError(e.message);
-      } finally { setLoading(false); }
+      } finally {
+        setLoading(false);
+      }
     }, (err) => setError(err.message || "Permission denied"));
   }
 
@@ -66,7 +71,7 @@ function App() {
 
         <div className="controls">
           <SearchBar onSearch={handleSearch} onUseLocation={handleUseLocation} />
-          <button className="theme-toggle" onClick={()=>setTheme(t=>t==="dark"?"light":"dark")}>
+          <button className="theme-toggle" onClick={() => setTheme(t => t === "dark" ? "light" : "dark")}>
             {theme === "dark" ? "Light" : "Dark"}
           </button>
         </div>
@@ -82,16 +87,16 @@ function App() {
               <h2>{cityLabel}</h2>
               <div className="current">
                 <div className="temp">{Math.round(forecast.current.temp)}°C</div>
-                <div className="desc">{forecast.current.weather[0].description}</div>
+                <div className="desc">{forecast.current.description}</div>
               </div>
             </section>
 
             <section className="chart-section">
-              <WeatherChart daily={forecast.daily.slice(0,7)} />
+              <WeatherChart daily={forecast.daily.slice(0, 7)} />
             </section>
 
             <section className="cards">
-              {forecast.daily.slice(0,7).map((d, i) => <ForecastCard key={i} day={d} />)}
+              {forecast.daily.slice(0, 7).map((d, i) => <ForecastCard key={i} day={d} />)}
             </section>
           </>
         )}

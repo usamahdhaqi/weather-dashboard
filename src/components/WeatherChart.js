@@ -3,13 +3,14 @@ import Chart from "chart.js/auto";
 
 export default function WeatherChart({ daily }) {
   const canvasRef = useRef(null);
+
   useEffect(() => {
     if (!daily) return;
     const ctx = canvasRef.current.getContext("2d");
-    const labels = daily.map(d => new Date(d.dt*1000).toLocaleDateString(undefined, { weekday: "short" }));
-    const tempsMax = daily.map(d => d.temp.max);
-    const tempsMin = daily.map(d => d.temp.min);
-    const pops = daily.map(d => Math.round((d.pop||0)*100));
+    const labels = daily.map(d => new Date(d.time).toLocaleDateString(undefined, { weekday: "short" }));
+    const tempsMax = daily.map(d => d.temp_max);
+    const tempsMin = daily.map(d => d.temp_min);
+    const precip = daily.map(d => d.precipitation);
 
     const chart = new Chart(ctx, {
       type: "line",
@@ -29,8 +30,8 @@ export default function WeatherChart({ daily }) {
             yAxisID: 'y',
           },
           {
-            label: "Precip (%)",
-            data: pops,
+            label: "Precip (mm)",
+            data: precip,
             type: "bar",
             yAxisID: 'y2',
           }
@@ -39,13 +40,16 @@ export default function WeatherChart({ daily }) {
       options: {
         maintainAspectRatio: false,
         scales: {
-          y: { type: 'linear', position: 'left', title: { display:true, text: 'Temperature (°C)' } },
+          y: {
+            type: 'linear',
+            position: 'left',
+            title: { display: true, text: 'Temperature (°C)' }
+          },
           y2: {
             type: 'linear',
             position: 'right',
             grid: { drawOnChartArea: false },
-            title: { display:true, text: 'Precipitation (%)' },
-            ticks: { max:100, min:0 }
+            title: { display: true, text: 'Precipitation (mm)' }
           }
         },
         plugins: { legend: { position: 'top' } }
