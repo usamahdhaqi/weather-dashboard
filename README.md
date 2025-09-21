@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# Weather Dashboard 🌦️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, minimal, and responsive **Weather Dashboard** built with React.  
+This project fetches weather data using the **[Open-Meteo API](https://open-meteo.com/)** (free & no API key required) and displays it in a clean dashboard with charts and forecast cards.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ✨ Features
+- 🌍 Search any city or use **your current location**
+- 📊 7-day forecast chart with **temperature & precipitation**
+- 🎨 Dark/Light theme toggle
+- 🖼️ Professional weather icons (**Bas Milius Weather Icons**)
+- ⚡ Built with **React + Chart.js**
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Tech Stack
+- **React 18**
+- **Chart.js** for data visualization
+- **Open-Meteo API** (weather & geocoding)
+- **Bas Milius Weather Icons** (MIT License, SVG based)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📂 Project Structure
+```
+/public
+  /icons       → Weather icons (SVG, Bas Milius)
+/src
+  /components
+    ForecastCard.js
+    SearchBar.js
+    WeatherChart.js
+  /services
+    weatherService.js
+  App.js
+  App.css
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ⚡ Installation & Setup
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/usamahdhaqi/weather-dashboard.git
+   cd weather-dashboard
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Start the dev server:
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Open in browser: **http://localhost:3000**
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🌦️ Weather Icons
+This project uses **Bas Milius Weather Icons** (MIT License).  
+Icons are placed inside `public/icons/` and mapped to **Open-Meteo weather codes**.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Example mapping:
+| Code | Description | Icon |
+|------|-------------|------|
+| 0    | Clear sky   | day_clear.svg |
+| 2    | Partly cloudy | day_partial_cloud.svg |
+| 61   | Rain        | day_rain.svg |
+| 71   | Snow        | day_snow.svg |
+| 95   | Thunderstorm | day_thunderstorm.svg |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Full mapping is implemented in `ForecastCard.js`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📸 Screenshots
+### Dark Theme
+![Dark Mode](docs/screenshots/dark.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Light Theme
+![Light Mode](docs/screenshots/light.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🛠️ Customization
+- Change theme colors in `App.css`
+- Add/replace weather icons in `public/icons/`
+- Extend chart data in `WeatherChart.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 📜 License
+This project is licensed under the **MIT License**.  
+Weather icons by **Bas Milius** (MIT License).  
+Weather data by **Open-Meteo API** (free, no key required).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## ⭐ Acknowledgements
+- [Open-Meteo](https://open-meteo.com/) for the free weather API
+- [Bas Milius Weather Icons](https://github.com/basmilius/weather-icons) for the icon set
+- [Chart.js](https://www.chartjs.org/) for visualization
+- React community 🚀
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Made with ❤️ by [Your Name]
