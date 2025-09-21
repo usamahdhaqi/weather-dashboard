@@ -1,42 +1,42 @@
 // Mapping lengkap weathercode Open-Meteo ke ikon Bas Milius (folder public/icons)
 const weatherIconMap = {
-  0: { desc: "Clear sky", icon: "/icons/day_clear.svg" },
-  1: { desc: "Mainly clear", icon: "/icons/day_clear.svg" },
-  2: { desc: "Partly cloudy", icon: "/icons/day_partial_cloud.svg" },
-  3: { desc: "Overcast", icon: "/icons/cloudy.svg" },
+  0: { desc: "Clear sky", icon: "/icons/clear-day.svg" },
+  1: { desc: "Mainly clear", icon: "/icons/partly-cloudy-day.svg" },
+  2: { desc: "Partly cloudy", icon: "/icons/cloudy.svg" },
+  3: { desc: "Overcast", icon: "/icons/overcast.svg" },
 
   45: { desc: "Fog", icon: "/icons/fog.svg" },
   48: { desc: "Rime fog", icon: "/icons/fog.svg" },
 
-  51: { desc: "Light drizzle", icon: "/icons/day_rain_light.svg" },
-  53: { desc: "Moderate drizzle", icon: "/icons/day_rain_light.svg" },
-  55: { desc: "Dense drizzle", icon: "/icons/day_rain.svg" },
+  51: { desc: "Light drizzle", icon: "/icons/partly-cloudy-day-drizzle.svg" },
+  53: { desc: "Moderate drizzle", icon: "/icons/drizzle.svg" },
+  55: { desc: "Dense drizzle", icon: "/icons/overcast-drizzle.svg" },
 
-  56: { desc: "Light freezing drizzle", icon: "/icons/day_rain_mix.svg" },
-  57: { desc: "Dense freezing drizzle", icon: "/icons/day_rain_mix.svg" },
+  56: { desc: "Light freezing drizzle", icon: "/icons/sleet.svg" },
+  57: { desc: "Dense freezing drizzle", icon: "/icons/overcast-sleet.svg" },
 
-  61: { desc: "Slight rain", icon: "/icons/day_rain_light.svg" },
-  63: { desc: "Moderate rain", icon: "/icons/day_rain.svg" },
-  65: { desc: "Heavy rain", icon: "/icons/day_rain.svg" },
+  61: { desc: "Slight rain", icon: "/icons/partly-cloudy-day-rain.svg" },
+  63: { desc: "Moderate rain", icon: "/icons/rain.svg" },
+  65: { desc: "Heavy rain", icon: "/icons/overcast-rain.svg" },
 
-  66: { desc: "Light freezing rain", icon: "/icons/day_rain_mix.svg" },
-  67: { desc: "Heavy freezing rain", icon: "/icons/day_rain_mix.svg" },
+  66: { desc: "Light freezing rain", icon: "/icons/overcast-sleet.svg" },
+  67: { desc: "Heavy freezing rain", icon: "/icons/sleet.svg" },
 
-  71: { desc: "Slight snow fall", icon: "/icons/day_snow.svg" },
-  73: { desc: "Moderate snow fall", icon: "/icons/day_snow.svg" },
-  75: { desc: "Heavy snow fall", icon: "/icons/day_snow.svg" },
-  77: { desc: "Snow grains", icon: "/icons/day_snow.svg" },
+  71: { desc: "Slight snow fall", icon: "/icons/partly-cloudy-day-snow.svg" },
+  73: { desc: "Moderate snow fall", icon: "/icons/snow.svg" },
+  75: { desc: "Heavy snow fall", icon: "/icons/overcast-day-snow.svg" },
+  77: { desc: "Snow grains", icon: "/icons/overcast-snow.svg" },
 
-  80: { desc: "Slight rain showers", icon: "/icons/day_rain_light.svg" },
-  81: { desc: "Moderate rain showers", icon: "/icons/day_rain.svg" },
-  82: { desc: "Violent rain showers", icon: "/icons/day_rain.svg" },
+  80: { desc: "Slight rain showers", icon: "/icons/partly-cloudy-day-rain.svg" },
+  81: { desc: "Moderate rain showers", icon: "/icons/rain.svg" },
+  82: { desc: "Violent rain showers", icon: "/icons/overcast-rain.svg" },
 
-  85: { desc: "Slight snow showers", icon: "/icons/day_snow.svg" },
-  86: { desc: "Heavy snow showers", icon: "/icons/day_snow_thunderstorm.svg" },
+  85: { desc: "Slight snow showers", icon: "/icons/snow.svg" },
+  86: { desc: "Heavy snow showers", icon: "/icons/overcast-snow.svg" },
 
-  95: { desc: "Thunderstorm", icon: "/icons/day_thunderstorm.svg" },
-  96: { desc: "Thunderstorm with hail", icon: "/icons/day_thunderstorm.svg" },
-  99: { desc: "Thunderstorm with hail", icon: "/icons/day_thunderstorm.svg" },
+  95: { desc: "Thunderstorm", icon: "/icons/thunderstorms.svg" },
+  96: { desc: "Thunderstorm with hail", icon: "/icons/thunderstorms.svg" },
+  99: { desc: "Thunderstorm with hail", icon: "/icons/thunderstorms.svg" },
 };
 
 function getWeatherInfo(code) {
