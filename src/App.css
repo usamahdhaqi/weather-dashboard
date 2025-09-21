@@ -10,6 +10,13 @@
   --text-light:#0b2b3a;
 }
 
+.thermometer-icon {
+  width: 100px;
+  height: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
 .app{min-height:100vh;padding:24px;transition:background .25s,color .25s}

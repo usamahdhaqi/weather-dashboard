@@ -8,7 +8,7 @@ import { fetchForecastByCoords, geocodeCity } from "./services/weatherService";
 function App() {
   const [forecast, setForecast] = useState(null);
   const [cityLabel, setCityLabel] = useState("");
-  const [theme, setTheme] = useState("dark"); // dark | light
+  const [theme, setTheme] = useState("dark");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -17,7 +17,10 @@ function App() {
       navigator.geolocation.getCurrentPosition(async (pos) => {
         try {
           setLoading(true);
-          const data = await fetchForecastByCoords(pos.coords.latitude, pos.coords.longitude);
+          const data = await fetchForecastByCoords(
+            pos.coords.latitude,
+            pos.coords.longitude
+          );
           setForecast(data);
           setCityLabel("Your Location");
         } catch (e) {
@@ -71,7 +74,10 @@ function App() {
 
         <div className="controls">
           <SearchBar onSearch={handleSearch} onUseLocation={handleUseLocation} />
-          <button className="theme-toggle" onClick={() => setTheme(t => t === "dark" ? "light" : "dark")}>
+          <button
+            className="theme-toggle"
+            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+          >
             {theme === "dark" ? "Light" : "Dark"}
           </button>
         </div>
@@ -85,6 +91,18 @@ function App() {
           <>
             <section className="summary">
               <h2>{cityLabel}</h2>
+
+              {/* Tambahan thermometer icon */}
+              <img
+                className="thermometer-icon"
+                src={
+                  forecast.current.temp >= 20
+                    ? "/icons/thermometer-warmer.svg"
+                    : "/icons/thermometer-colder.svg"
+                }
+                alt="Temperature indicator"
+              />
+
               <div className="current">
                 <div className="temp">{Math.round(forecast.current.temp)}°C</div>
                 <div className="desc">{forecast.current.description}</div>
@@ -96,7 +114,9 @@ function App() {
             </section>
 
             <section className="cards">
-              {forecast.daily.slice(0, 7).map((d, i) => <ForecastCard key={i} day={d} />)}
+              {forecast.daily.slice(0, 7).map((d, i) => (
+                <ForecastCard key={i} day={d} />
+              ))}
             </section>
           </>
         )}
