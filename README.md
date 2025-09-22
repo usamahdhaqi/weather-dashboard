@@ -79,7 +79,7 @@ Full mapping is implemented in `ForecastCard.js`.
 
 ## 📸 Screenshots
 ### Dark Theme
-![Dark Mode](docs/screenshots/dark.png)
+![Dark Mode](../public/screenshoot-weather-dashboard-2.PNG)
 
 ### Light Theme
 ![Light Mode](docs/screenshots/light.png)
@@ -108,4 +108,4 @@ Weather data by **Open-Meteo API** (free, no key required).
 
 ---
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by [usamahdhaqi]
