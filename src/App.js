@@ -8,7 +8,6 @@ import { fetchForecastByCoords, geocodeCity } from "./services/weatherService";
 function App() {
   const [forecast, setForecast] = useState(null);
   const [cityLabel, setCityLabel] = useState("");
-  const [theme, setTheme] = useState("dark");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -50,22 +49,28 @@ function App() {
 
   async function handleUseLocation() {
     if (!("geolocation" in navigator)) return setError("Geolocation not supported");
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-      try {
-        setLoading(true);
-        const data = await fetchForecastByCoords(pos.coords.latitude, pos.coords.longitude);
-        setForecast(data);
-        setCityLabel("Your Location");
-      } catch (e) {
-        setError(e.message);
-      } finally {
-        setLoading(false);
-      }
-    }, (err) => setError(err.message || "Permission denied"));
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          setLoading(true);
+          const data = await fetchForecastByCoords(
+            pos.coords.latitude,
+            pos.coords.longitude
+          );
+          setForecast(data);
+          setCityLabel("Your Location");
+        } catch (e) {
+          setError(e.message);
+        } finally {
+          setLoading(false);
+        }
+      },
+      (err) => setError(err.message || "Permission denied")
+    );
   }
 
   return (
-    <div className={`app ${theme}`}>
+    <div className="app">
       <header className="topbar">
         <div className="brand">
           <h1>Weather Dashboard</h1>
@@ -74,12 +79,6 @@ function App() {
 
         <div className="controls">
           <SearchBar onSearch={handleSearch} onUseLocation={handleUseLocation} />
-          <button
-            className="theme-toggle"
-            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
-          >
-            {theme === "dark" ? "Light" : "Dark"}
-          </button>
         </div>
       </header>
 
@@ -92,7 +91,7 @@ function App() {
             <section className="summary">
               <h2>{cityLabel}</h2>
 
-              {/* Tambahan thermometer icon */}
+              {/* Thermometer icon */}
               <img
                 className="thermometer-icon"
                 src={
