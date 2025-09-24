@@ -1,9 +1,9 @@
 :root {
-  --bg-dark: #1a2a44;       /* lebih terang dari sebelumnya */
-  --card-dark: #243b61;     /* lebih soft */
-  --muted: #a9c1d6;
-  --accent: #5bd0ff;
-  --glass: rgba(255, 255, 255, 0.05);
+  --bg: #cdb4db;       /* background utama (ungu pastel) */
+  --card: #ffc8dd;     /* card background (pink muda) */
+  --accent: #ffafcc;   /* tombol/aksen pink cerah */
+  --secondary: #bde0fe;/* detail sekunder (biru lembut) */
+  --text: #064232;     /* biarkan teks tetap hijau gelap agar kontras */
 }
 
 * {
@@ -13,14 +13,15 @@
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .app {
   min-height: 100vh;
   padding: 24px;
-  background: linear-gradient(180deg, var(--bg-dark), #16294d);
-  color: #eaf6ff;
   transition: background 0.25s, color 0.25s;
+  background: linear-gradient(180deg, var(--bg), #a2d2ff);
 }
 
 .topbar {
@@ -32,13 +33,13 @@ body {
 
 .brand h1 {
   margin: 0;
-  font-size: 20px;
-  letter-spacing: 0.6px;
+  font-size: 22px;
+  color: var(--text);
 }
 
 .tag {
   margin: 0;
-  color: var(--muted);
+  color: var(--secondary);
   font-size: 13px;
 }
 
@@ -57,8 +58,10 @@ body {
 .input {
   padding: 8px 10px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--secondary);
   min-width: 220px;
+  background: #fff;
+  color: var(--text);
 }
 
 .btn {
@@ -66,15 +69,15 @@ body {
   border-radius: 8px;
   border: none;
   background: var(--accent);
-  color: #032029;
+  color: var(--text);
   cursor: pointer;
   font-weight: 600;
 }
 
 .btn.ghost {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: inherit;
+  border: 1px solid var(--secondary);
+  color: var(--text);
 }
 
 .main {
@@ -91,19 +94,20 @@ body {
 .current .temp {
   font-size: 42px;
   font-weight: 700;
+  color: var(--text);
 }
 
 .current .desc {
-  color: var(--muted);
+  color: var(--secondary);
   text-transform: capitalize;
 }
 
 .chart-section {
-  background: var(--card-dark);
+  background: var(--card);
   padding: 12px;
   border-radius: 12px;
   margin-bottom: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .cards {
@@ -115,11 +119,11 @@ body {
 
 .forecast-card {
   width: 120px;
-  background: var(--card-dark);
+  background: var(--card);
   padding: 10px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .forecast-card .temps {
@@ -127,6 +131,7 @@ body {
   justify-content: center;
   gap: 8px;
   font-weight: 700;
+  color: var(--text);
 }
 
 .chart-wrap {
@@ -135,18 +140,19 @@ body {
 
 .loader {
   padding: 20px;
+  color: var(--text);
 }
 
 .error {
-  color: #ffb4b4;
-  background: rgba(255, 180, 180, 0.06);
+  color: #b00020;
+  background: rgba(255, 200, 221, 0.3);
   padding: 10px;
   border-radius: 8px;
 }
 
 .thermometer-icon {
-  width: 32px;
-  height: 32px;
+  width: 100px;
+  height: 100px;
   margin-left: 8px;
   vertical-align: middle;
 }

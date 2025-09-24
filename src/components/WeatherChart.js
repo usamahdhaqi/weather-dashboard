@@ -7,7 +7,15 @@ export default function WeatherChart({ daily }) {
   useEffect(() => {
     if (!daily) return;
     const ctx = canvasRef.current.getContext("2d");
-    const labels = daily.map(d => new Date(d.time).toLocaleDateString(undefined, { weekday: "short" }));
+
+    // Gradient background
+    const gradientBg = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+    gradientBg.addColorStop(0, "rgba(255, 165, 171, 0.3)"); // #ffa5ab
+    gradientBg.addColorStop(1, "rgba(249, 219, 189, 0.3)"); // #f9dbbd
+
+    const labels = daily.map(d =>
+      new Date(d.time).toLocaleDateString(undefined, { weekday: "short" })
+    );
     const tempsMax = daily.map(d => d.temp_max);
     const tempsMin = daily.map(d => d.temp_min);
     const precip = daily.map(d => d.precipitation);
@@ -21,43 +29,83 @@ export default function WeatherChart({ daily }) {
             label: "Max (°C)",
             data: tempsMax,
             tension: 0.3,
-            yAxisID: 'y',
+            borderColor: "#da627d",
+            backgroundColor: "rgba(218, 98, 125, 0.6)",
+            yAxisID: "y",
           },
           {
             label: "Min (°C)",
             data: tempsMin,
             tension: 0.3,
-            yAxisID: 'y',
+            borderColor: "#a53860",
+            backgroundColor: "rgba(165, 56, 96, 0.6)",
+            yAxisID: "y",
           },
           {
             label: "Precip (mm)",
             data: precip,
             type: "bar",
-            yAxisID: 'y2',
-          }
-        ]
+            yAxisID: "y2",
+            backgroundColor: "rgba(69, 9, 32, 0.7)", // lebih gelap
+            borderRadius: 4,
+          },
+        ],
       },
       options: {
         maintainAspectRatio: false,
         scales: {
           y: {
-            type: 'linear',
-            position: 'left',
-            title: { display: true, text: 'Temperature (°C)' }
+            type: "linear",
+            position: "left",
+            title: { display: true, text: "Temperature (°C)", color: "#450920" },
+            ticks: { color: "#450920" },
+            grid: { color: "rgba(69, 9, 32, 0.2)" }, // lebih gelap
           },
           y2: {
-            type: 'linear',
-            position: 'right',
-            grid: { drawOnChartArea: false },
-            title: { display: true, text: 'Precipitation (mm)' }
-          }
+            type: "linear",
+            position: "right",
+            grid: { drawOnChartArea: false, color: "rgba(69, 9, 32, 0.2)" }, // lebih gelap
+            title: { display: true, text: "Precipitation (mm)", color: "#450920" },
+            ticks: { color: "#450920" },
+          },
+          x: {
+            ticks: { color: "#450920" },
+            grid: { color: "rgba(69, 9, 32, 0.2)" }, // lebih gelap
+          },
         },
-        plugins: { legend: { position: 'top' } }
-      }
+        plugins: {
+          legend: {
+            position: "top",
+            labels: { color: "#450920" },
+          },
+        },
+      },
+      plugins: [
+        {
+          id: "customBackground",
+          beforeDraw: (chart) => {
+            const { ctx, chartArea } = chart;
+            if (!chartArea) return;
+            ctx.save();
+            ctx.fillStyle = gradientBg;
+            ctx.fillRect(
+              chartArea.left,
+              chartArea.top,
+              chartArea.right - chartArea.left,
+              chartArea.bottom - chartArea.top
+            );
+            ctx.restore();
+          },
+        },
+      ],
     });
 
     return () => chart.destroy();
   }, [daily]);
 
-  return <div className="chart-wrap"><canvas ref={canvasRef}></canvas></div>;
+  return (
+    <div className="chart-wrap">
+      <canvas ref={canvasRef}></canvas>
+    </div>
+  );
 }
