@@ -8,10 +8,20 @@ export default function WeatherChart({ daily }) {
     if (!daily) return;
     const ctx = canvasRef.current.getContext("2d");
 
-    // Gradient background
+    // Gradient background untuk chart area
     const gradientBg = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
     gradientBg.addColorStop(0, "rgba(255, 165, 171, 0.3)"); // #ffa5ab
     gradientBg.addColorStop(1, "rgba(249, 219, 189, 0.3)"); // #f9dbbd
+
+    // Gradient fill untuk garis Max (pink rose → transparan)
+    const gradientMax = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+    gradientMax.addColorStop(0, "rgba(218, 98, 125, 0.4)"); // #da627d
+    gradientMax.addColorStop(1, "rgba(218, 98, 125, 0)");
+
+    // Gradient fill untuk garis Min (ungu kemerahan → transparan)
+    const gradientMin = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+    gradientMin.addColorStop(0, "rgba(165, 56, 96, 0.4)"); // #a53860
+    gradientMin.addColorStop(1, "rgba(165, 56, 96, 0)");
 
     const labels = daily.map(d =>
       new Date(d.time).toLocaleDateString(undefined, { weekday: "short" })
@@ -30,7 +40,8 @@ export default function WeatherChart({ daily }) {
             data: tempsMax,
             tension: 0.3,
             borderColor: "#da627d",
-            backgroundColor: "rgba(218, 98, 125, 0.6)",
+            backgroundColor: gradientMax, // gunakan gradient fill
+            fill: true, // aktifkan fill
             yAxisID: "y",
           },
           {
@@ -38,7 +49,8 @@ export default function WeatherChart({ daily }) {
             data: tempsMin,
             tension: 0.3,
             borderColor: "#a53860",
-            backgroundColor: "rgba(165, 56, 96, 0.6)",
+            backgroundColor: gradientMin, // gunakan gradient fill
+            fill: true, // aktifkan fill
             yAxisID: "y",
           },
           {
@@ -59,18 +71,18 @@ export default function WeatherChart({ daily }) {
             position: "left",
             title: { display: true, text: "Temperature (°C)", color: "#450920" },
             ticks: { color: "#450920" },
-            grid: { color: "rgba(69, 9, 32, 0.2)" }, // lebih gelap
+            grid: { color: "rgba(69, 9, 32, 0.2)" },
           },
           y2: {
             type: "linear",
             position: "right",
-            grid: { drawOnChartArea: false, color: "rgba(69, 9, 32, 0.2)" }, // lebih gelap
+            grid: { drawOnChartArea: false, color: "rgba(69, 9, 32, 0.2)" },
             title: { display: true, text: "Precipitation (mm)", color: "#450920" },
             ticks: { color: "#450920" },
           },
           x: {
             ticks: { color: "#450920" },
-            grid: { color: "rgba(69, 9, 32, 0.2)" }, // lebih gelap
+            grid: { color: "rgba(69, 9, 32, 0.2)" },
           },
         },
         plugins: {
