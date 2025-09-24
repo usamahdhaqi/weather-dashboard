@@ -78,11 +78,8 @@ Full mapping is implemented in `ForecastCard.js`.
 ---
 
 ## 📸 Screenshots
-### Dark Theme
-![Dark Mode](./public/screenshot-weather-dashboard.PNG)
 
-### Light Theme
-![Light Mode](docs/screenshots/light.png)
+![Dark Mode](./public/screenshot-weather-dashboard.PNG)
 
 ---
 
