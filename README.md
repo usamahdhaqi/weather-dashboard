@@ -67,11 +67,11 @@ Icons are placed inside `public/icons/` and mapped to **Open-Meteo weather codes
 Example mapping:
 | Code | Description | Icon |
 |------|-------------|------|
-| 0    | Clear sky   | day_clear.svg |
-| 2    | Partly cloudy | day_partial_cloud.svg |
-| 61   | Rain        | day_rain.svg |
-| 71   | Snow        | day_snow.svg |
-| 95   | Thunderstorm | day_thunderstorm.svg |
+| 0    | Clear sky   | clear-day.svg |
+| 2    | Partly cloudy | cloudy.svg |
+| 61   | Rain        | rain.svg |
+| 71   | Snow        | snow.svg |
+| 95   | Thunderstorm | thunderstorms.svg |
 
 Full mapping is implemented in `ForecastCard.js`.
 
