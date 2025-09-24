@@ -2,8 +2,8 @@
   --bg: #cdb4db;       /* background utama (ungu pastel) */
   --card: #ffc8dd;     /* card background (pink muda) */
   --accent: #ffafcc;   /* tombol/aksen pink cerah */
-  --secondary: #bde0fe;/* detail sekunder (biru lembut) */
-  --text: #064232;     /* biarkan teks tetap hijau gelap agar kontras */
+  --secondary: #a53860;
+  --text: #450920;     
 }
 
 * {
